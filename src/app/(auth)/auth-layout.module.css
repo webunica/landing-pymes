@@ -1,0 +1,178 @@
+.authContainer {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--color-bg);
+}
+
+/* Lado Izquierdo (Formulario) */
+.authFormSide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-8);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .authFormSide {
+        max-width: none;
+        padding: var(--space-12) var(--space-24);
+    }
+}
+
+.authHeader {
+    margin-bottom: auto;
+}
+
+.logoLink {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+}
+
+.logoIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-bold);
+    font-size: 1.25rem;
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+}
+
+.authContent {
+    width: 100%;
+    max-width: 420px;
+    margin: var(--space-12) auto;
+}
+
+.authFooter {
+    margin-top: auto;
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+/* Lado Derecho (Visual Decorativo - Solo en Desktop) */
+.authVisualSide {
+    display: none;
+    flex: 1;
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-16);
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .authVisualSide {
+        display: flex;
+    }
+}
+
+.visualContent {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+}
+
+.visualContent h2 {
+    font-size: clamp(2rem, 3vw, var(--text-4xl));
+    font-weight: var(--font-extrabold);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-6);
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.visualContent p {
+    font-size: var(--text-lg);
+    color: #94a3b8;
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-12);
+}
+
+.glassBadge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.avatar {
+    font-size: 2rem;
+}
+
+.glassBadge strong {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    margin-bottom: 4px;
+}
+
+.glassBadge span {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* Background Blobs Animados */
+.blob1,
+.blob2 {
+    position: absolute;
+    filter: blur(80px);
+    z-index: 1;
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: float 20s infinite ease-in-out alternate;
+}
+
+.blob1 {
+    top: -10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: var(--color-primary);
+}
+
+.blob2 {
+    bottom: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: #6366f1;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(-50px, 50px) scale(1.1);
+    }
+}
