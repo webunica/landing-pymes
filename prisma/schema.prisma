@@ -1,0 +1,206 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ── ENUMS ──────────────────────────────────────────
+
+enum Role {
+  SUPER_ADMIN
+  OWNER
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+enum PageType {
+  landing_rubro
+  cluster
+  integracion
+  recurso
+  comparativa
+  ciudad
+}
+
+enum LeadStatus {
+  nuevo
+  contactado
+  demo
+  cerrado_ganado
+  cerrado_perdido
+}
+
+// ── MODELOS ────────────────────────────────────────
+
+model Tenant {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  name            String
+  active          Boolean  @default(true)
+  trialEndsAt     DateTime?
+  planId          String?
+  verticalPackId  String?
+  themeId         String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relaciones
+  plan         PricingPlan?       @relation(fields: [planId], references: [id])
+  verticalPack VerticalPack?      @relation(fields: [verticalPackId], references: [id])
+  theme        Theme?             @relation(fields: [themeId], references: [id])
+  users        UserWorkspaceRole[]
+  leads        Lead[]
+
+  @@index([slug])
+  @@index([active])
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String
+  passwordHash  String
+  emailVerified Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  workspaces UserWorkspaceRole[]
+}
+
+model UserWorkspaceRole {
+  userId      String
+  workspaceId String
+  role        Role     @default(VIEWER)
+  createdAt   DateTime @default(now())
+
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace Tenant @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@id([userId, workspaceId])
+}
+
+model VerticalPack {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  sanityId  String?
+  active    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tenants    Tenant[]
+  pages      Page[]
+  caseStudies CaseStudy[]
+  leads      Lead[]
+
+  @@index([slug])
+  @@index([active])
+}
+
+model Page {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  pageType       PageType
+  verticalPackId String?
+  sanityId       String?
+  seoTitle       String?
+  seoDescription String?
+  noindex        Boolean  @default(false)
+  publishedAt    DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  verticalPack VerticalPack? @relation(fields: [verticalPackId], references: [id])
+
+  @@index([slug])
+  @@index([verticalPackId])
+  @@index([pageType])
+}
+
+model Theme {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  tokens    Json     // CSS tokens como objeto JSON
+  isDefault Boolean  @default(false)
+  sanityId  String?
+  createdAt DateTime @default(now())
+
+  tenants Tenant[]
+
+  @@index([slug])
+  @@index([isDefault])
+}
+
+model Lead {
+  id               String     @id @default(cuid())
+  workspaceId      String?
+  name             String
+  email            String
+  phone            String?
+  company          String?
+  rubro            String?
+  message          String?
+  sourcePage       String?
+  sourceVerticalId String?
+  utmSource        String?
+  utmMedium        String?
+  utmCampaign      String?
+  consent          Boolean    @default(false)
+  status           LeadStatus @default(nuevo)
+  notes            String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  workspace    Tenant?      @relation(fields: [workspaceId], references: [id])
+  sourceVertical VerticalPack? @relation(fields: [sourceVerticalId], references: [id])
+
+  @@index([email])
+  @@index([status])
+  @@index([sourceVerticalId])
+  @@index([createdAt])
+}
+
+model PricingPlan {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  priceCLPMonthly Int
+  priceCLPAnnual  Int
+  features        Json     // array de { text, included }
+  limits          Json     // array de { name, value }
+  highlighted     Boolean  @default(false)
+  active          Boolean  @default(true)
+  sanityId        String?
+  createdAt       DateTime @default(now())
+
+  tenants Tenant[]
+
+  @@index([slug])
+}
+
+model CaseStudy {
+  id             String    @id @default(cuid())
+  slug           String    @unique
+  companyName    String
+  verticalPackId String?
+  results        Json      // array de { metric, value }
+  quote          String?
+  featured       Boolean   @default(false)
+  sanityId       String?
+  publishedAt    DateTime?
+  createdAt      DateTime  @default(now())
+
+  verticalPack VerticalPack? @relation(fields: [verticalPackId], references: [id])
+
+  @@index([slug])
+  @@index([verticalPackId])
+  @@index([featured])
+}

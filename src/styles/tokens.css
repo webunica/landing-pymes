@@ -1,0 +1,180 @@
+/* ============================================================
+   WEBÚNICA — DESIGN TOKENS
+   Sistema de variables CSS para el theme system multi-rubro
+   ============================================================ */
+
+/* ── THEME: TECH CLEAN (default) ── */
+:root,
+[data-theme="tech-clean"] {
+  /* Colores — Primary (Azul eléctrico) */
+  --color-primary-50:  #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-900: #1e3a8a;
+
+  /* Colores — Secondary (Violeta) */
+  --color-secondary-50:  #f5f3ff;
+  --color-secondary-100: #ede9fe;
+  --color-secondary-500: #8b5cf6;
+  --color-secondary-600: #7c3aed;
+  --color-secondary-700: #6d28d9;
+
+  /* Colores — Accent (Cian) */
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #0891b2;
+
+  /* Semánticos */
+  --color-primary:   var(--color-primary-600);
+  --color-secondary: var(--color-secondary-600);
+  --color-accent:    var(--color-accent-500);
+
+  /* Fondos y superficies */
+  --color-bg:      #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5f9;
+  --color-border:  #e2e8f0;
+  --color-border-2: #cbd5e1;
+
+  /* Texto */
+  --color-text-primary:   #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted:     #94a3b8;
+  --color-text-inverse:   #ffffff;
+
+  /* Estados */
+  --color-success:  #10b981;
+  --color-warning:  #f59e0b;
+  --color-error:    #ef4444;
+  --color-info:     #3b82f6;
+
+  /* Tipografía */
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  /* Escala tipográfica */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+
+  /* Line heights */
+  --leading-tight:  1.25;
+  --leading-snug:   1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.625;
+
+  /* Font weights */
+  --font-normal:    400;
+  --font-medium:    500;
+  --font-semibold:  600;
+  --font-bold:      700;
+  --font-extrabold: 800;
+
+  /* Border radius */
+  --radius-none: 0;
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  /* Card radius */
+  --radius-card: var(--radius-xl);
+  --radius-btn:  var(--radius-md);
+  --radius-badge:var(--radius-full);
+  --radius-input:var(--radius-md);
+
+  /* Sombras */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:  0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg:  0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+  --shadow-xl:  0 20px 25px rgba(0,0,0,0.08), 0 10px 10px rgba(0,0,0,0.03);
+  --shadow-colored: 0 8px 24px rgba(37,99,235,0.18);
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Layout */
+  --container-max:    1280px;
+  --container-narrow: 768px;
+  --nav-height:       68px;
+
+  /* Transiciones */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+  --transition-spring: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── THEME: CORPORATIVO PREMIUM ── */
+[data-theme="premium"] {
+  --color-primary:   #0f172a;
+  --color-secondary: #1e40af;
+  --color-accent:    #d4af37;
+
+  --color-bg:        #ffffff;
+  --color-surface:   #f8fafc;
+  --color-surface-2: #f1f5f9;
+  --color-border:    #e2e8f0;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #374151;
+
+  --font-heading:    'Playfair Display', Georgia, serif;
+  --font-body:       'Inter', system-ui, sans-serif;
+
+  --radius-card: var(--radius-sm);
+  --radius-btn:  var(--radius-sm);
+
+  --shadow-colored: 0 8px 24px rgba(15,23,42,0.12);
+}
+
+/* ── THEME: AMIGABLE PYME ── */
+[data-theme="amigable"] {
+  --color-primary:   #059669;
+  --color-secondary: #f59e0b;
+  --color-accent:    #ec4899;
+
+  --color-primary-50:  #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+
+  --color-bg:        #fafafa;
+  --color-surface:   #ffffff;
+  --color-surface-2: #f0fdf4;
+  --color-border:    #d1fae5;
+  --color-text-primary:   #111827;
+  --color-text-secondary: #374151;
+
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --radius-card: var(--radius-2xl);
+  --radius-btn:  var(--radius-full);
+
+  --shadow-colored: 0 8px 24px rgba(5,150,105,0.2);
+}

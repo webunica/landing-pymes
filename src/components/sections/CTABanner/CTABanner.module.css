@@ -1,0 +1,108 @@
+.cta {
+    padding-block: var(--space-16);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta--gradient {
+    background: linear-gradient(135deg, var(--color-primary-700, #1d4ed8) 0%, var(--color-secondary-700, #6d28d9) 100%);
+    color: white;
+}
+
+.cta--dark {
+    background: var(--color-text-primary);
+    color: white;
+}
+
+.cta--default {
+    background: var(--color-primary-50, #eff6ff);
+}
+
+/* decoración */
+.cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+    .inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        gap: var(--space-12);
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 600px;
+}
+
+.title {
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    font-weight: var(--font-extrabold);
+    line-height: var(--leading-tight);
+    color: inherit;
+}
+
+.cta--default .title {
+    color: var(--color-text-primary);
+}
+
+.sub {
+    font-size: var(--text-lg);
+    opacity: 0.88;
+    line-height: var(--leading-relaxed);
+}
+
+.cta--default .sub {
+    color: var(--color-text-secondary);
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: center;
+    flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+    .actions {
+        flex-direction: row;
+    }
+}
+
+.btnSecondary {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.btnSecondary:hover {
+    background: rgba(255, 255, 255, 0.22) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.cta--default .btnSecondary {
+    background: transparent !important;
+    color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}

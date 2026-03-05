@@ -1,0 +1,107 @@
+/* Styles específicos de la Home */
+
+/* Logo band */
+.logoBand {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+.logoBandLabel {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: var(--space-5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: var(--font-medium);
+}
+
+.logos {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+}
+
+.logoItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.logoItem:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Testimonios */
+.testimonioCard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+    position: relative;
+}
+
+.testimonioCard:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.testimonioCard::before {
+    content: '"';
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-6);
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--color-primary-100, #dbeafe);
+    font-family: Georgia, serif;
+    pointer-events: none;
+}
+
+.testimonioRubro {
+    font-size: 1.5rem;
+}
+
+.testimonioQuote {
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    line-height: var(--leading-relaxed);
+    font-style: italic;
+    flex: 1;
+}
+
+.testimonioFooter {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+}
+
+.testimonioFooter strong {
+    font-weight: var(--font-semibold);
+    color: var(--color-text-primary);
+    font-size: var(--text-sm);
+}
+
+.testimonioFooter span {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
