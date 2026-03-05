@@ -57,6 +57,7 @@ model Tenant {
   theme        Theme?             @relation(fields: [themeId], references: [id])
   users        UserWorkspaceRole[]
   leads        Lead[]
+  products     Product[]
 
   @@index([slug])
   @@index([active])
@@ -241,4 +242,22 @@ model CaseStudy {
   @@index([slug])
   @@index([verticalPackId])
   @@index([featured])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  workspaceId String
+  name        String
+  description String?  @db.Text
+  sku         String?
+  price       Int
+  stock       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace   Tenant   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([active])
 }
