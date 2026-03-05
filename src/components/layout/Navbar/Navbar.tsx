@@ -10,6 +10,7 @@ const NAV_LINKS = [
     { href: '/integraciones', label: 'Integraciones' },
     { href: '/precios', label: 'Precios' },
     { href: '/casos', label: 'Casos' },
+    { href: '/contacto', label: 'Contacto' },
 ]
 
 export default function Navbar() {

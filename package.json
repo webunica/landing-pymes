@@ -9,12 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@prisma/client": "^7.4.2",
+    "@prisma/client": "^6.19.2",
     "@sanity/client": "^7.16.0",
     "@sanity/image-url": "^2.0.3",
     "next": "16.1.6",
     "next-sanity": "^12.1.0",
-    "prisma": "^7.4.2",
+    "prisma": "^6.19.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "resend": "^6.9.3",
