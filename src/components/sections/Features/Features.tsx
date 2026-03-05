@@ -10,7 +10,7 @@ interface Feature {
 interface FeaturesProps {
     title: string
     subtitle?: string
-    features: Feature[]
+    features?: Feature[]
     variant?: 'grid' | 'alternating'
 }
 
